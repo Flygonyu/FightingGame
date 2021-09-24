@@ -1,0 +1,31 @@
+body{
+    text-align: center;
+    /* background: rgb(251,63,63); */
+    background: radial-gradient(circle, rgb(133, 133, 133) 0%, rgba(0,0,0,1) 100%);
+}
+
+#deg{
+   float:left;
+}
+
+#opponent{
+    float:right;
+}
+
+.wrapper{
+    margin:100px auto;
+    width: 1000px;
+    height: 500px;
+    text-align: center;
+
+}
+
+img {
+    border-radius: 50%;
+    border: 1px solid black;
+  }
+
+  h1{
+      font-family: Eater;
+      font-size: 60px;
+  }
