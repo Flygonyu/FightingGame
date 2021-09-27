@@ -1,8 +1,11 @@
 body{
     text-align: center;
     /* background: rgb(251,63,63); */
-    background: radial-gradient(circle, rgb(133, 133, 133) 0%, rgba(0,0,0,1) 100%);
+    background: radial-gradient(circle, rgb(184, 84, 84) 0%, rgba(0,0,0,1) 100%);
     color: white;
+    font-size: x-large;
+    font-family: Yatra One;
+    /* font-family: 'Montserrat', sans-serif; */
 }
 
 #deg{
@@ -17,6 +20,10 @@ body{
 
 .gameInfo{
     width: 200px;
+    font-family: Lacquer;
+    font-size: 40px;
+    color:rgb(65, 22, 22);
+    
 }
 
 .wrapper{
@@ -26,24 +33,45 @@ body{
     text-align: center;
     display: flex;
   	justify-content: center;
-  	
+}
+
+.playerName {
+    margin-bottom: 15px;
 }
 
 img {
     border-radius: 50%;
-    border: 1px solid black;
+    border: 2px inset rgb(77, 2, 2);
     width: 200px;
   }
 
   h1{
-      font-family: Eater;
+      font-family: Nosifer;
       font-size: 60px;
-      color: black;
+      color: rgb(20, 3, 3);
+      min-width: 1000px;
   }
 
   .hide{
       display: none;
   }
 
-  
- 
+button{
+    background-color: rgb(107, 107, 107);
+    width: 80px;
+    margin-left: 2px;
+    font-family: Finger Paint;
+    border-radius: 5px;
+}
+
+#blocked{
+    color:rgb(116, 116, 116);
+    font-size: 20px;
+}
+
+input{
+    height: 20px;
+    width: 230px;
+    text-align: center;
+    font-family: Finger Paint;
+}
