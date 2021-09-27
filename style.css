@@ -2,14 +2,21 @@ body{
     text-align: center;
     /* background: rgb(251,63,63); */
     background: radial-gradient(circle, rgb(133, 133, 133) 0%, rgba(0,0,0,1) 100%);
+    color: white;
 }
 
 #deg{
    float:left;
+   width: 300px;
 }
 
 #opponent{
     float:right;
+    width: 300px;
+}
+
+.gameInfo{
+    width: 200px;
 }
 
 .wrapper{
@@ -17,15 +24,26 @@ body{
     width: 1000px;
     height: 500px;
     text-align: center;
-
+    display: flex;
+  	justify-content: center;
+  	
 }
 
 img {
     border-radius: 50%;
     border: 1px solid black;
+    width: 200px;
   }
 
   h1{
       font-family: Eater;
       font-size: 60px;
+      color: black;
   }
+
+  .hide{
+      display: none;
+  }
+
+  
+ 
