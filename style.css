@@ -75,3 +75,7 @@ input{
     text-align: center;
     font-family: Finger Paint;
 }
+
+.NPCAttackInfo{
+    margin-top: 72px;
+}

@@ -98,18 +98,19 @@ let disableButtons = 'disabled';
 let disableDefend = '';
 let buttonstatus;
 let buttonfunction;
-let hideBlock ='hide'
+let hideBlock ='hide';
+let hideHeal ='hide'
 // let nextOpponent = 1;
 // let defend;
 // model.opponent.player.name.length);
 let hasplayed = 'false';
+let disabledHeal;
+// let level;
 
 
 
 //view
 show();
-
-
 function show(){
   
   if (model[0].hp == 0) {
@@ -136,7 +137,12 @@ function show(){
     attackText = '';
   }
   if (model[6].hp < 250 ){model[6].picture = `<img src="unknown.png">`}
-
+  if(disabledHeal > 0) {
+    disableheal = 'Disabled';
+    disabledHeal = disabledHeal -= 1;
+  model[6].attacks.name = ['UNDÈFINED', 'ERROR', 'UNEXPECTED TOKEN', 'EMPTYCONSOLE']//.splice(3, 1, 'EMPTYCONSOLE');
+model[6].attacks.power = [10, 20, 40, 45];
+} else {hideHeal='hide';}
   // if(defenceUP == 0){
   //   hideBlock='hide';
   // }
@@ -161,7 +167,7 @@ function show(){
     <button ${disableheal} id="Heal" onclick="heal()">Heal</button>
     <br>
     <div id="yourAttack" class="humanAttackInfo ${hide}">You used ${weaponHooman}! ${attackText} You did ${humanDamage} damage</div>
-    <br><div id="blocked" class="${hideBlock}"">You used Defend! ${model[opponentNum].player}'s attacks are less effective for ${defenceUP +1} rounds</div>
+    <br><div id="blocked" class="${hideBlock}">You used Defend! ${model[opponentNum].player}'s attacks are less effective for ${defenceUP +1} rounds</div>
     </div>
   <div class="gameInfo"><div class=${hideInfo}>${inputValue} ${gameInfo} mot ${model[opponentNum].player} 
     <br> <button ${buttonfunction}>${buttonstatus}</button>
@@ -172,6 +178,7 @@ function show(){
     <br>HP: ${model[opponentNum].hp}
     <br>
     <div class="NPCAttackInfo ${hide}">${model[opponentNum].player} attacked you with ${weaponNPC} for ${NPCDamage} damage!</div>
+    <br><div id="blocked" class="${hideHeal}">${model[opponentNum].player} stopped your heals! Healing is disabled for ${disabledHeal +1} rounds</div>
     </div>
 </div> 
 `;
@@ -234,14 +241,15 @@ function Fireattack() {
     if (model[6].hp <= 0) {
       buttonfunction = "onclick='nextLevelButton()'"
     buttonstatus = "are you sure you want to do this?"
-    hideInfo = '';} else if (model[6].hp <= 0 && level == 2) {
-      butt
+    hideInfo = '';} //else if (model[6].hp <= 0 && level == 2) {
+    //  butt
     }
+
     attackNPC();
   hide = '';
     show();
 }
-}
+
 
 function attackNPC() {
   
@@ -262,7 +270,13 @@ function attackNPC() {
     weaponNPC = model[opponentNum].attacks.name[rdmAttkNameNum];
 
     NPCDamage = (model[opponentNum].attacks.power[rdmAttkNameNum] * attackImpact);
-    
+    if (NPCDamage >= 100) {
+      NPCDamage = 0;
+      disabledHeal = 3;
+      hideHeal='';
+      
+    console.log(NPCDamage ,'Nå har det funka')
+    }
     if (defenceUP > 0) {
       NPCDamage = NPCDamage * 0.5;
       defenceUP -= 1;
@@ -358,8 +372,11 @@ function nextLevel(){
   model[5].picture = `<img src="TerjeHard.png">`;
   model[5].hp = 600;
   model[6].hp = 1000;
+  model[6].attacks.name = ['UNDÈFINED', 'No Save', 'UNEXPECTED TOKEN', 'No Save']; //.splice(3, 1, 'No Save');
+  model[6].attacks.power = [10, 200, 40, 200]; //splice(3, 1, Healdisable())
   show()
 }
+
  function reset() {
   opponentNum = 1;
   // level = 1 + 1;
@@ -382,6 +399,7 @@ function nextLevel(){
   disableDefend=''
   show()
  }
+
  function nextEnemy() {
    console.log('continue')
    opponentNum += 1;
